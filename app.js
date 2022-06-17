@@ -2,8 +2,11 @@ const express = require("express");
 const app = express();
 const axios = require("axios");
 
+// TG Bot Token
 const BOT_TOKEN = process.env.BOT_TOKEN
+// TG 聊天 ID
 const CHAT_ID = process.env.CHAT_ID;
+// TG 消息解析模式
 const PARSE_MODE = "Markdown"
 
 app.use(express.json())
