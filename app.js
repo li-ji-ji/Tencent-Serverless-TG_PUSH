@@ -37,7 +37,7 @@ const uptimeKumaData = (data) => {
 🔹 *服务标签*: ${data.monitor.tags.map((tag) => `| 🏷️ *${tag.name}* `).join('')}
 🔹 *地址*: [${data.monitor.name}](${data.monitor.url})  
 🔹 *状态*: ${data.heartbeat.status ? "🟢 UP" : "🔴 DOWN"}  
-🔹 *时间*: ${moment.utc(data.heartbeat.time).local().format('YYYY-MM-DD HH:mm:ss')}  
+🔹 *时间*: ${moment.utc(data.heartbeat.time).utcOffset(8).format('YYYY-MM-DD HH:mm:ss')}  
 🔹 *信息*: ${data.heartbeat.msg}  
 🔹 *心跳间隔*: ${data.monitor.interval} 秒  
 🔹 *重试次数*: ${data.monitor.maxretries} 次  
