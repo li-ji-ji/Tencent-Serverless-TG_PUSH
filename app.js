@@ -6,9 +6,11 @@ const moment = require('moment');
 // TG Bot Token
 const BOT_TOKEN = process.env.BOT_TOKEN
 // TG 聊天 ID
-const CHAT_ID = process.env.CHAT_ID;
+const CHAT_ID = process.env.CHAT_ID
 // TG 消息解析模式
 const PARSE_MODE = "Markdown"
+// UptimeKuma 地址  
+const UPTIMEKUMA_HOST = process.env.UPTIMEKUMA_HOST
 
 app.use(express.json())
 
@@ -33,7 +35,7 @@ const callTGBot = (text) => {
 // 将 UptimeKuma 数据拼接成 Markdown 格式的文本
 const uptimeKumaData = (data) => {
   return `
-  *➖➖➖➖➖${data.monitor.name}➖➖➖➖➖*
+  *------------------${data.monitor.name}------------------*
 🔹 *服务标签*: ${data.monitor.tags.map((tag) => `| 🏷️ *${tag.name}* `).join('')}
 🔹 *地址*: [${data.monitor.name}](${data.monitor.url})  
 🔹 *状态*: ${data.heartbeat.status ? "🟢 UP" : "🔴 DOWN"}  
@@ -41,7 +43,7 @@ const uptimeKumaData = (data) => {
 🔹 *信息*: ${data.heartbeat.msg}  
 🔹 *心跳间隔*: ${data.monitor.interval} 秒  
 🔹 *重试次数*: ${data.monitor.maxretries} 次  
-🔹 *监控面板*: [UptimeKuma](https://home.evil➖scream.cn:8445/dashboard)  
+🔹 *监控面板*: [UptimeKuma](${UPTIMEKUMA_HOST})  
   `
 }
 
